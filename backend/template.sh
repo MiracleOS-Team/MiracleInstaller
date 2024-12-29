@@ -178,7 +178,7 @@ function disk_configuration() {{
 # depending on your current environment, this file might be stored on an actual disk,
 # and so your password would be written to that disk at least once.
 
-GENTOO_INSTALL_ENCRYPTION_KEY={disk.encryption.key}
+#GENTOO_INSTALL_ENCRYPTION_KEY={disk.encryption.key}
 
 ################################################
 # System configuration
