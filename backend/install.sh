@@ -1,0 +1,2 @@
+cd gentoo-install
+./install
