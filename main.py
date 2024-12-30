@@ -6,7 +6,7 @@ import backend
 def configure_system():
     # Default values
     defaults = {
-        "disk_encryption": "true",
+        "disk_encryption": "false",
         "rootfs": "ext4",
         "boot_type": "efi",
         "swap_size": "8Gib",

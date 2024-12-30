@@ -178,7 +178,7 @@ function disk_configuration() {{
 # depending on your current environment, this file might be stored on an actual disk,
 # and so your password would be written to that disk at least once.
 
-#GENTOO_INSTALL_ENCRYPTION_KEY={disk.encryption.key}
+GENTOO_INSTALL_ENCRYPTION_KEY={disk.encryption.key}
 
 ################################################
 # System configuration
@@ -290,7 +290,7 @@ SELECT_MIRRORS_LARGE_FILE={mirrors.select.largefiles}
 
 # Array of additional packages to install
 # e.g. ADDITIONAL_PACKAGES=("app-editors/neovim")
-ADDITIONAL_PACKAGES=("x11-misc/sddm", "gui-wm/labwc", "x11-terms/alacritty", "x11-misc/dmenu", "x11-misc/dunst", "x11-misc/rofi", "x11-misc/picom", "x11-misc/feh", "x11-misc/xclip", "x11-misc/xset", "x11-misc/xsetroot", "x11-misc/xrandr", "x11-misc/xprop", "x11-misc/xinput", "x11-misc/xbacklight", "x11-misc/xmodmap", "x11-misc/xrdb", "x11-misc/xev", "x11-misc/xwininfo", "x11-misc/xkill", "x11-misc/xrdb", "x11-misc/xinit", "x11-misc/xauth", "x11-misc/xhost")
+ADDITIONAL_PACKAGES=("x11-misc/sddm gui-wm/labwc x11-terms/alacritty x11-misc/dmenu x11-misc/dunst x11-misc/rofi x11-misc/picom x11-misc/feh x11-misc/xclip x11-misc/xset x11-misc/xsetroot x11-misc/xrandr x11-misc/xprop x11-misc/xinput x11-misc/xbacklight x11-misc/xmodmap x11-misc/xrdb x11-misc/xev x11-misc/xwininfo x11-misc/xkill x11-misc/xrdb x11-misc/xinit x11-misc/xauth x11-misc/xhost")
 
 # Install and configure sshd (a reasonably secure config is provided, which
 # only allows the use of ed25519 keys, and requires pubkey authentication)

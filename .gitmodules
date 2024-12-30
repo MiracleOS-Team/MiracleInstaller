@@ -1,0 +1,3 @@
+[submodule "gentoo-install"]
+	path = gentoo-install
+	url = https://github.com/oddlama/gentoo-install.git
