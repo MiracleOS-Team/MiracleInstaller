@@ -290,7 +290,7 @@ SELECT_MIRRORS_LARGE_FILE={mirrors.select.largefiles}
 
 # Array of additional packages to install
 # e.g. ADDITIONAL_PACKAGES=("app-editors/neovim")
-ADDITIONAL_PACKAGES=("x11-misc/sddm gui-wm/labwc x11-terms/alacritty x11-misc/dmenu x11-misc/dunst x11-misc/rofi x11-misc/picom x11-misc/feh x11-misc/xclip x11-misc/xset x11-misc/xsetroot x11-misc/xrandr x11-misc/xprop x11-misc/xinput x11-misc/xbacklight x11-misc/xmodmap x11-misc/xrdb x11-misc/xev x11-misc/xwininfo x11-misc/xkill x11-misc/xrdb x11-misc/xinit x11-misc/xauth x11-misc/xhost")
+ADDITIONAL_PACKAGES=()
 
 # Install and configure sshd (a reasonably secure config is provided, which
 # only allows the use of ed25519 keys, and requires pubkey authentication)
@@ -357,9 +357,46 @@ I_HAVE_READ_AND_EDITED_THE_CONFIG_PROPERLY=true
 #   einfo 'before install'
 # }}
 
-# after_install() {{
-#   einfo 'after install'
-# }}
+after_install() {{
+  echo "Adding necessary overlays..."
+
+# Add Wayland overlay (for labwc, sway, etc.)
+eselect repository enable wayland-desktop
+eselect repository enable guru
+
+# Update the repositories and package database
+emerge --quiet --update --newuse @world
+
+# Install required packages without asking
+echo "Installing packages..."
+
+emerge --quiet --noreplace \
+    x11-wm/sway \
+    x11-misc/labwc \
+    gui-apps/eww \
+    x11-terms/alacritty \
+    net-misc/networkmanager \
+    media-sound/pavucontrol \
+    media-video/wdisplays \
+    x11-misc/swaybg \
+    sys-auth/swayidle \
+    www-client/firefox \
+    dev-lang/python:3.11 \
+    dev-vcs/git
+
+cd /
+
+mkdir -p miracleos-software
+cd miracleos-software
+
+git clone --recurse-submodules https://github.com/MiracleOS-Team/Dotfiles
+git clone --recurse-submodules https://github.com/MiracleOS-Team/Icons
+git clone --recurse-submodules https://github.com/MiracleOS-Team/file-manager
+
+mkdir -p /usr/share/icons
+ln -s /miracleos-software/Icons/MiracleOSIcons /usr/share/icons/MiracleOSIcons
+
+}}
 
 # before_configure_base_system() {{
 #   einfo 'before configure base system'
