@@ -360,26 +360,50 @@ I_HAVE_READ_AND_EDITED_THE_CONFIG_PROPERLY=true
 after_install() {{
   echo "Adding necessary overlays..."
 
+emerge --autounmask-write --quiet app-eselect/eselect-repository
+
 # Add Wayland overlay (for labwc, sway, etc.)
 eselect repository enable wayland-desktop
 eselect repository enable guru
 
+emaint sync
+
+euse -g -E wayland dbus wifi
+
+emerge --autounmask-write --quiet dev-libs/libdbusmenu[gtk3]
+dispatch-conf
+emerge --autounmask-write --quiet dev-libs/libdbusmenu[gtk3]
+
 # Update the repositories and package database
-emerge --quiet --update --newuse @world
+emerge --autounmask-write --quiet --update --newuse @world
 
 # Install required packages without asking
 echo "Installing packages..."
 
-emerge --quiet --noreplace \
-    x11-wm/sway \
-    x11-misc/labwc \
+emerge --autounmask-write --quiet \
+    gui-wm/sway \
+    gui-wm/labwc \
     gui-apps/eww \
     x11-terms/alacritty \
     net-misc/networkmanager \
     media-sound/pavucontrol \
-    media-video/wdisplays \
-    x11-misc/swaybg \
-    sys-auth/swayidle \
+    gui-apps/wdisplays \
+    gui-apps/swaybg \
+    gui-apps/swayidle \
+    www-client/firefox \
+    dev-lang/python:3.11 \
+    dev-vcs/git
+dispatch-conf
+emerge --autounmask-write --quiet \
+    gui-wm/sway \
+    gui-wm/labwc \
+    gui-apps/eww \
+    x11-terms/alacritty \
+    net-misc/networkmanager \
+    media-sound/pavucontrol \
+    gui-apps/wdisplays \
+    gui-apps/swaybg \
+    gui-apps/swayidle \
     www-client/firefox \
     dev-lang/python:3.11 \
     dev-vcs/git
