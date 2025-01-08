@@ -368,7 +368,7 @@ eselect repository enable guru
 
 emaint sync
 
-euse -g -E wayland dbus wifi
+euse -g -E wayland dbus wifi udev X alsa
 
 emerge --autounmask-write --quiet dev-libs/libdbusmenu[gtk3]
 dispatch-conf
@@ -408,17 +408,16 @@ emerge --autounmask-write --quiet \
     dev-lang/python:3.11 \
     dev-vcs/git
 
-cd /
-
-mkdir -p miracleos-software
-cd miracleos-software
+mkdir -p /opt/miracleos-software
+cd /opt/miracleos-software
 
 git clone --recurse-submodules https://github.com/MiracleOS-Team/Dotfiles
 git clone --recurse-submodules https://github.com/MiracleOS-Team/Icons
 git clone --recurse-submodules https://github.com/MiracleOS-Team/file-manager
+git clone --recurse-submodules https://github.com/MiracleOS-Team/notifications-service
 
 mkdir -p /usr/share/icons
-ln -s /miracleos-software/Icons/MiracleOSIcons /usr/share/icons/MiracleOSIcons
+ln -s /opt/miracleos-software/Icons/MiracleOSIcons /usr/share/icons/MiracleOSIcons
 
 }}
 
