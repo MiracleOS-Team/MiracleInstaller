@@ -368,7 +368,7 @@ eselect repository enable guru
 
 emaint sync
 
-euse -g -E wayland dbus wifi udev X alsa
+euse -g -E wayland dbus wifi udev X alsa opengl vulkan
 
 emerge --autounmask-write --quiet dev-libs/libdbusmenu[gtk3]
 dispatch-conf
@@ -392,7 +392,8 @@ emerge --autounmask-write --quiet \
     gui-apps/swayidle \
     www-client/firefox \
     dev-lang/python:3.11 \
-    dev-vcs/git
+    dev-vcs/git \
+    x11-misc/sddm
 dispatch-conf
 emerge --autounmask-write --quiet \
     gui-wm/sway \
@@ -406,7 +407,8 @@ emerge --autounmask-write --quiet \
     gui-apps/swayidle \
     www-client/firefox \
     dev-lang/python:3.11 \
-    dev-vcs/git
+    dev-vcs/git \
+    x11-misc/sddm
 
 mkdir -p /opt/miracleos-software
 cd /opt/miracleos-software
